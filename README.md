@@ -1,4 +1,4 @@
-# ATELIER / IMPACT — Creative Studio V3
+# ATELIER / IMPACT — Creative Studio V3.1
 
 ## Contenu
 - `index.html` : application autonome, sans build et sans dépendances JavaScript externes.
@@ -38,3 +38,14 @@ Le studio reste utilisable sans le relais en mode graphique ou avec des images i
 - Les polices Google sont facultatives et nécessitent une connexion pour être chargées.
 - L'aperçu graphique nécessite un navigateur moderne compatible Canvas.
 - Syntaxe JS contrôlée ; test navigateur automatisé non réalisable dans l'environnement de génération.
+
+
+## Améliorations V3.1
+- Aperçu central nettement agrandi et ajusté automatiquement à la surface disponible.
+- Zoom + / −, zoom 100 % et Ajuster à l’écran. Les exports conservent leur résolution native.
+- Largeurs des panneaux ajustables avec les curseurs dans le panneau de droite (écrans larges).
+- Panneau de propriétés masquable pour libérer l’espace de création.
+- Champs et boutons plus lisibles ; comportement responsive revu.
+- Le moteur Canvas, Make, le carrousel et la vidéo de la V3 sont conservés.
+
+**Attention :** les curseurs de largeur concernent l'affichage sur grand écran. Le zoom 100 % peut nécessiter un défilement dans l'aperçu.
