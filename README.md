@@ -1,25 +1,12 @@
-# ATELIER / IMPACT — V3.5
+# ATELIER / IMPACT V3.6 — Éditeur de calques photo
 
-Évolution de la V3.4 : calques libres texte et rectangles au-dessus des compositions existantes.
+Évolution du projet V3.5 : calques photographiques indépendants, glisser-déposer, redimensionnement des calques image et forme, duplication, ordre des calques, verrouillage, et exports sans contours de sélection.
 
-## Nouveautés
-- Ajouter des calques texte ou forme ; les sélectionner et les déplacer à la souris dans l’aperçu.
-- Changer texte, couleur, taille et largeur ; réorganiser, verrouiller, supprimer.
-- Calques conservés dans le JSON du projet et dans les sauvegardes locales.
-- Rendu des calques dans les exports image et carrousel PDF.
-- Les calques sont globaux à la composition, pas spécifiques à chaque page.
+## Déploiement
+Utiliser Cloudflare Pages avec les fichiers à la racine (`index.html`, `functions/api/image.js`). Le déploiement ZIP direct ne prend pas en charge la fonction Pages `functions/` : utiliser Wrangler ou Git pour la conserver.
 
-## Limites
-- Pas encore de calques photo indépendants, ni poignées de redimensionnement sur le canvas.
-- Le titre original peut toujours être déplacé avec son outil dédié : désactivez « Déplacer le titre » pour sélectionner les nouveaux calques.
-- Les fichiers images locaux ne sont pas intégrés au JSON.
-- Le studio vidéo reste inchangé et n'affiche pas les calques.
-- Le déploiement Cloudflare avec Functions requiert Wrangler ou Git, et non le simple glisser-déposer de ZIP.
+## Utilisation
+Dans Studio image → Calques libres, choisir **+ Photo**, puis importer un JPEG, PNG ou WebP autorisé (4 Mo maximum). Sélectionner un calque, le glisser ; déplacer sa poignée orange en bas à droite pour le redimensionner. **Dupliquer** crée une copie indépendante.
 
-## Tester
-1. Ouvrir Studio image, ajouter un texte puis une forme.
-2. Déplacer chaque calque dans le canvas, vérifier verrouillage et ordre.
-3. Exporter un PNG et sauvegarder/importer le JSON.
-4. Tester un carrousel PDF et le chargement d'un lien Make existant.
-
-Déployez d'abord sur un projet Cloudflare Pages de test.
+## Limitations
+Les images sont stockées en data URL dans le JSON : les fichiers peuvent devenir volumineux et dépasser les limites du localStorage. Pour un travail important, privilégier l'export JSON. Les calques restent communs aux pages du carrousel. Le montage vidéo complet et MP4 ne sont pas implémentés. Les images distantes nécessitent le proxy Cloudflare.
