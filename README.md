@@ -1,36 +1,40 @@
-# ATELIER / IMPACT — Creative Studio V2 (progressive)
+# ATELIER / IMPACT — Creative Studio V3
 
 ## Contenu
-- `index.html` : studio original conservé, plus nouvelle navigation, sauvegarde locale, historique annuler/rétablir, export/import JSON, plan de carrousel et storyboard vidéo.
-- `functions/api/image.js` : proxy Cloudflare Pages original conservé.
+- `index.html` : application autonome, sans build et sans dépendances JavaScript externes.
+- `functions/api/image.js` : relais Cloudflare Pages restreint aux images Cedefop (HTTPS, formats et tailles filtrés).
+
+## Fonctions
+- Nouvelle interface en trois espaces indépendants : Image, Carrousel, Vidéo.
+- Studio image : 5 univers graphiques, 3 compositions, couverture graphique sans photographie, export PNG 1080/1200/1600, image importée, cadrage, source et crédits.
+- Carrousel : ajout, duplication, suppression, déplacement et édition de pages, export PNG de chaque page et PDF multipage.
+- Vidéo : trois scènes éditables, durées 2–12 s, animation graphique, prévisualisation et export WebM sans audio si `MediaRecorder` est disponible. Pas de MP4, d'audio ni de génération de vidéo IA.
+- Sauvegarde locale, export/import de projet JSON, annuler/rétablir des changements.
+- Compatibilité des paramètres Make : `title`, `source`, `category`, `image`, `sourceUrl`, `subtitle`, `theme`, `layout`, `edition`, `signature`, `credit`.
 
 ## Déploiement
-Déployer **le contenu de ce dossier** sur Cloudflare Pages, de préférence dans un projet de préproduction distinct. Le point d’entrée est `index.html` à la racine et le dossier `functions/` doit rester à la racine. Aucune compilation ni clé API requise.
+**Conseillé : déployer d'abord sur un projet Cloudflare Pages de test.**
 
-## Compatibilité Make
-Les paramètres existants `title`, `source`, `category`, `image`, `sourceUrl`, `subtitle`, `theme`, `layout`, `edition`, `signature` restent pris en charge. Les URL Make existantes n'ont pas besoin d'être modifiées.
+Si vous utilisez l'import manuel ZIP dans le tableau de bord Cloudflare, les fichiers statiques sont déployés mais le répertoire `functions/` n'est pas compilé. Pour disposer du relais `/api/image` et charger les images Cedefop, utiliser Git intégration ou Wrangler :
 
-## Fonctions livrées
-- Prévisualisation et export PNG carré de l'application originale
-- 5 palettes et 3 compositions originales
-- Navigation Image / Carrousel (plan) / Vidéo (storyboard)
-- Sauvegarde locale des champs, export/import projet JSON, annuler/rétablir (champs)
-- Exports JSON du plan de carrousel et du storyboard
+```bash
+npx wrangler pages deploy . --project-name=NOM_DU_PROJET
+```
 
-## Limites transparentes
-- Pas d'export PDF carrousel ni MP4 vidéo : les onglets correspondants sont des espaces de préproduction.
-- Pas d'analyse automatique d'images ni de reconnaissance de texte dans les bannières.
-- Le sélecteur de mode typographique est indicatif ; pour retirer une photo déjà chargée, effacer l'URL et recharger.
-- Les images locales importées ne sont pas sérialisées dans le projet JSON.
-- Historique sur les champs, pas sur les images importées.
-- Pas de connexion IA payante, de publication automatique LinkedIn ou de stockage cloud.
-- Contrôler les droits des photographies et les faits avant publication.
+Cette commande s'exécute dans le dossier contenant `index.html` et `functions/` après authentification Cloudflare. Sur un projet Pages déjà relié à Git, privilégier son workflow Git.
 
-## Étapes suivantes
-1. Refonte modulaire du moteur canvas pour formats 4:5 / 9:16 et mise en page adaptative.
-2. Mode graphique réellement automatique pour bannières institutionnelles, avec détection assistée.
-3. Éditeur multi-pages et export PDF.
-4. Timeline vidéo et moteur de rendu vidéo testé.
+Le studio reste utilisable sans le relais en mode graphique ou avec des images importées localement.
 
-## Test rapide
-Ouvrir `index.html` dans un navigateur (le proxy distant ne fonctionne qu'une fois déployé sur Cloudflare), saisir un titre, exporter PNG, sauvegarder/restaurer, tester JSON et les onglets. Tester une URL de Make avec paramètres encodés.
+## Confidentialité et droits
+- Aucun identifiant LinkedIn ni clé Gemini n'est nécessaire.
+- Les sauvegardes sont locales au navigateur. Le projet JSON ne contient pas les octets d'une photo importée localement.
+- Les URL d'images Cedefop ne signifient pas que leur réutilisation est autorisée. Vérifier les droits.
+- Pas de publication automatique sur LinkedIn.
+
+## Limites connues
+- L'export WebM dépend du navigateur et peut ne pas être pris en charge sur tous les appareils.
+- L'export PDF est généré localement à partir de pages JPEG incorporées.
+- Les vidéos sont carrées, sans piste sonore ni MP4.
+- Les polices Google sont facultatives et nécessitent une connexion pour être chargées.
+- L'aperçu graphique nécessite un navigateur moderne compatible Canvas.
+- Syntaxe JS contrôlée ; test navigateur automatisé non réalisable dans l'environnement de génération.
