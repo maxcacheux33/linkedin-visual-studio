@@ -1,51 +1,15 @@
-# ATELIER / IMPACT — Creative Studio V3.1
+# ATELIER / IMPACT — Creative Studio V3.2
 
-## Contenu
-- `index.html` : application autonome, sans build et sans dépendances JavaScript externes.
-- `functions/api/image.js` : relais Cloudflare Pages restreint aux images Cedefop (HTTPS, formats et tailles filtrés).
+Version basée sur la V3.1 : 15 compositions (3 historiques et 12 nouvelles), typographie réglable, alignement, textures, accents, exploration aléatoire. Studios image/carrousel/vidéo conservés.
 
-## Fonctions
-- Nouvelle interface en trois espaces indépendants : Image, Carrousel, Vidéo.
-- Studio image : 5 univers graphiques, 3 compositions, couverture graphique sans photographie, export PNG 1080/1200/1600, image importée, cadrage, source et crédits.
-- Carrousel : ajout, duplication, suppression, déplacement et édition de pages, export PNG de chaque page et PDF multipage.
-- Vidéo : trois scènes éditables, durées 2–12 s, animation graphique, prévisualisation et export WebM sans audio si `MediaRecorder` est disponible. Pas de MP4, d'audio ni de génération de vidéo IA.
-- Sauvegarde locale, export/import de projet JSON, annuler/rétablir des changements.
-- Compatibilité des paramètres Make : `title`, `source`, `category`, `image`, `sourceUrl`, `subtitle`, `theme`, `layout`, `edition`, `signature`, `credit`.
+## Installation
 
-## Déploiement
-**Conseillé : déployer d'abord sur un projet Cloudflare Pages de test.**
+Déployer le dossier sur Cloudflare Pages via Git ou Wrangler afin de conserver `functions/api/image.js`. Le dépôt ZIP direct de Cloudflare Pages ne garantit pas le déploiement de cette fonction.
 
-Si vous utilisez l'import manuel ZIP dans le tableau de bord Cloudflare, les fichiers statiques sont déployés mais le répertoire `functions/` n'est pas compilé. Pour disposer du relais `/api/image` et charger les images Cedefop, utiliser Git intégration ou Wrangler :
+## Compatibilité
 
-```bash
-npx wrangler pages deploy . --project-name=NOM_DU_PROJET
-```
+Paramètres Make préservés : `title`, `source`, `category`, `image`, `sourceUrl`. Projets JSON V3 compatibles. Aucun appel payant ajouté.
 
-Cette commande s'exécute dans le dossier contenant `index.html` et `functions/` après authentification Cloudflare. Sur un projet Pages déjà relié à Git, privilégier son workflow Git.
+## Limites
 
-Le studio reste utilisable sans le relais en mode graphique ou avec des images importées localement.
-
-## Confidentialité et droits
-- Aucun identifiant LinkedIn ni clé Gemini n'est nécessaire.
-- Les sauvegardes sont locales au navigateur. Le projet JSON ne contient pas les octets d'une photo importée localement.
-- Les URL d'images Cedefop ne signifient pas que leur réutilisation est autorisée. Vérifier les droits.
-- Pas de publication automatique sur LinkedIn.
-
-## Limites connues
-- L'export WebM dépend du navigateur et peut ne pas être pris en charge sur tous les appareils.
-- L'export PDF est généré localement à partir de pages JPEG incorporées.
-- Les vidéos sont carrées, sans piste sonore ni MP4.
-- Les polices Google sont facultatives et nécessitent une connexion pour être chargées.
-- L'aperçu graphique nécessite un navigateur moderne compatible Canvas.
-- Syntaxe JS contrôlée ; test navigateur automatisé non réalisable dans l'environnement de génération.
-
-
-## Améliorations V3.1
-- Aperçu central nettement agrandi et ajusté automatiquement à la surface disponible.
-- Zoom + / −, zoom 100 % et Ajuster à l’écran. Les exports conservent leur résolution native.
-- Largeurs des panneaux ajustables avec les curseurs dans le panneau de droite (écrans larges).
-- Panneau de propriétés masquable pour libérer l’espace de création.
-- Champs et boutons plus lisibles ; comportement responsive revu.
-- Le moteur Canvas, Make, le carrousel et la vidéo de la V3 sont conservés.
-
-**Attention :** les curseurs de largeur concernent l'affichage sur grand écran. Le zoom 100 % peut nécessiter un défilement dans l'aperçu.
+Les 12 nouveaux styles utilisent un canvas carré 1200 × 1200. La sélection intelligente des bannières par OCR, l'export MP4, la médiathèque persistante et les formats portrait/paysage ne sont pas implémentés. Contrôler les droits des images. Tester les exports dans Chrome/Edge après déploiement.
