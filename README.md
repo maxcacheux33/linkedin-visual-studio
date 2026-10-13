@@ -1,15 +1,20 @@
-# ATELIER / IMPACT — Creative Studio V3.2
+# ATELIER / IMPACT V3.3 — Direction artistique contextuelle
 
-Version basée sur la V3.1 : 15 compositions (3 historiques et 12 nouvelles), typographie réglable, alignement, textures, accents, exploration aléatoire. Studios image/carrousel/vidéo conservés.
+## Nouveautés
+- Trois propositions de direction artistique selon les mots du titre et de la rubrique, entièrement dans le navigateur, sans API ni frais.
+- Chaque proposition configure une composition, un univers, une texture et une couleur d’accent. Le choix reste manuel.
+- Collage : bloc gauche illustré avec motifs et typographie lorsqu’aucune photo autorisée n’est disponible.
+- Diptyque : colonne gauche enrichie d’une rubrique lorsqu’aucune photo n’est disponible.
+- Les fonctions V3.2, 15 compositions, export image/carrousel/vidéo, paramètres Make et Cloudflare sont conservés.
 
-## Installation
+## Utilisation
+1. Ouvrir Studio image.
+2. Entrer le titre et la rubrique (ou ouvrir un lien prérempli Make).
+3. Cliquer « Proposer 3 directions » et sélectionner celle souhaitée.
+4. Vérifier les faits, droits de l’image et rendu, puis exporter.
 
-Déployer le dossier sur Cloudflare Pages via Git ou Wrangler afin de conserver `functions/api/image.js`. Le dépôt ZIP direct de Cloudflare Pages ne garantit pas le déploiement de cette fonction.
-
-## Compatibilité
-
-Paramètres Make préservés : `title`, `source`, `category`, `image`, `sourceUrl`. Projets JSON V3 compatibles. Aucun appel payant ajouté.
+## Déploiement Cloudflare
+Déployer le dossier avec Wrangler ou une intégration Git pour activer `functions/api/image.js`. Un simple glisser-déposer statique n’active pas nécessairement les Functions.
 
 ## Limites
-
-Les 12 nouveaux styles utilisent un canvas carré 1200 × 1200. La sélection intelligente des bannières par OCR, l'export MP4, la médiathèque persistante et les formats portrait/paysage ne sont pas implémentés. Contrôler les droits des images. Tester les exports dans Chrome/Edge après déploiement.
+La suggestion utilise des règles lexicales, et non une IA distante. Elle n’analyse pas le contenu visuel des images. Le navigateur et le proxy doivent être testés sur le domaine cible.
