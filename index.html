@@ -289,6 +289,10 @@ b.style.fontWeight = b === button ? '700' : '';
   });
 });
 
+document.querySelector(
+  '[data-publication-filter="toutes"]'
+)?.click();
+
 function text(tag,value,cls){
  const el=document.createElement(tag);
  if(cls)el.className=cls;
