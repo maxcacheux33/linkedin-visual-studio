@@ -17,7 +17,26 @@
 @media(max-width:850px){.app,.app.inspector-collapsed{grid-template-columns:1fr}.rail{grid-row:auto;flex-direction:row;position:sticky;top:0;z-index:5;justify-content:center;padding:8px}.mark{width:35px;height:35px;margin:0 auto 0 0;font-size:14px}.nav{width:auto;padding:6px 13px;display:flex;gap:5px}.nav span{font-size:15px}.railfoot{display:none}.panel,.inspector{max-height:none;grid-column:1;display:block}.workspace{padding:20px 13px}.stage{padding:10px;height:clamp(350px,65vh,650px);min-height:350px}.panel{padding:20px}.inspector{padding:20px}.topline h2{font-size:20px}.view-controls{gap:8px}}
 @media(prefers-reduced-motion:reduce){.stage canvas{transition:none}}
 .field input[type=range]{padding:0;min-height:25px;accent-color:#bde9da}.panel{font-size:13px}.field label{font-size:12px}.field input,.field textarea,.field select{font-size:13px}.btn{font-size:12px}.panel h1{font-size:26px}.stage{background:radial-gradient(ellipse at 50% 40%,#1b4652,#061720 72%)}.stat{padding:13px}.inspector .help{font-size:12px}@media(min-width:1400px){.app{grid-template-columns:72px minmax(315px,350px) minmax(0,1fr) minmax(270px,310px)}}
-</style><style id="v35-style">.layer-row{display:flex;align-items:center;gap:7px;padding:8px;margin:6px 0;border:1px solid #3b6067;border-radius:10px;background:#102f39;color:#e8f5f0;width:100%;text-align:left}.layer-row.selected{border-color:#bde9da;background:#20505a}.layer-row button{border:0;background:transparent;color:inherit;cursor:pointer}.layer-row .layer-name{flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.layer-tools{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:7px}.layer-tools .btn{padding:9px 7px}.layer-selected{border-top:1px solid #3b6067;margin-top:12px;padding-top:12px}.stage canvas.layer-edit{cursor:crosshair;touch-action:none}.layer-hint{font-size:11px;color:#b8d2cf;line-height:1.5}.layer-empty{font-size:11px;color:#9fbebb}</style><style id="v36-styles">.layer-tools{grid-template-columns:repeat(3,minmax(0,1fr))}.layer-tools .btn{font-size:10px}.layer-row:focus-visible{outline:2px solid #bde9da}.stage canvas.layer-edit{touch-action:none}</style><style id="v33-styles">.art-suggestions{display:grid;gap:8px;margin-top:10px}.art-choice{width:100%;text-align:left;padding:11px;border:1px solid #47717a;border-radius:10px;background:#10313d;color:#e7f4f1;cursor:pointer;font:inherit}.art-choice:hover,.art-choice:focus-visible{background:#1a4d59;border-color:#bde9da}.art-choice strong{display:block;font-size:12px;margin-bottom:4px}.art-choice small{display:block;color:#bad0d2;font-size:11px;line-height:1.35}.art-choice[aria-pressed="true"]{border-color:#bde9da;box-shadow:inset 3px 0 #bde9da}.art-suggestions:empty{display:none}</style></head><body><div class="app"><nav class="rail" aria-label="Navigation du studio"><div class="mark">A/</div><button class="nav active" data-tab="image"><span>▧</span>Image</button><button class="nav" data-tab="carousel"><span>▤</span>Carrousel</button><button class="nav" data-tab="video"><span>▷</span>Vidéo</button><button class="nav" data-tab="publications"><span>▤</span>Publications
+</style><style id="v35-style">.layer-row{display:flex;align-items:center;gap:7px;padding:8px;margin:6px 0;border:1px solid #3b6067;border-radius:10px;background:#102f39;color:#e8f5f0;width:100%;text-align:left}.layer-row.selected{border-color:#bde9da;background:#20505a}.layer-row button{border:0;background:transparent;color:inherit;cursor:pointer}.layer-row .layer-name{flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.layer-tools{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:7px}.layer-tools .btn{padding:9px 7px}.layer-selected{border-top:1px solid #3b6067;margin-top:12px;padding-top:12px}.stage canvas.layer-edit{cursor:crosshair;touch-action:none}.layer-hint{font-size:11px;color:#b8d2cf;line-height:1.5}.layer-empty{font-size:11px;color:#9fbebb}</style><style id="v36-styles">.layer-tools{grid-template-columns:repeat(3,minmax(0,1fr))}.layer-tools .btn{font-size:10px}.layer-row:focus-visible{outline:2px solid #bde9da}.stage canvas.layer-edit{touch-action:none}</style><style id="v33-styles">.art-suggestions{display:grid;gap:8px;margin-top:10px}.art-choice{width:100%;text-align:left;padding:11px;border:1px solid #47717a;border-radius:10px;background:#10313d;color:#e7f4f1;cursor:pointer;font:inherit}.art-choice:hover,.art-choice:focus-visible{background:#1a4d59;border-color:#bde9da}.art-choice strong{display:block;font-size:12px;margin-bottom:4px}.art-choice small{display:block;color:#bad0d2;font-size:11px;line-height:1.35}.art-choice[aria-pressed="true"]{border-color:#bde9da;box-shadow:inset 3px 0 #bde9da}.art-suggestions:empty{display:none}</style>
+<style id="impact-v5-publications">
+#publicationsPanel{padding:clamp(18px,3vw,34px)!important;max-height:none!important}
+.impact-pub-head{display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap}
+.impact-pub-head h2{margin:0;font:800 24px Manrope,sans-serif}
+.impact-pub-meta{color:#a8c9c6;font-size:12px;line-height:1.6}
+#publicationsStatus{margin-top:18px;color:#b9d9d1;font-size:12px}
+#publicationsList{grid-template-columns:repeat(auto-fit,minmax(min(100%,360px),1fr))}
+.impact-pub-card{border:1px solid #3b6268;border-radius:17px;background:linear-gradient(145deg,#143843,#0b2630);padding:20px;min-width:0}
+.impact-pub-top{display:flex;justify-content:space-between;gap:12px;align-items:center}
+.impact-pub-tag{font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:#bce9d9;font-weight:800}
+.impact-pub-score{font-size:11px;border:1px solid #4d7879;border-radius:999px;padding:5px 9px;color:#d8efe8;white-space:nowrap}
+.impact-pub-card h3{font:800 17px/1.35 Manrope,sans-serif;margin:15px 0 9px;overflow-wrap:anywhere}
+.impact-pub-source{font-size:11px;color:#9fc4c1;margin-bottom:15px;overflow-wrap:anywhere}
+.impact-pub-text{white-space:pre-wrap;overflow-wrap:anywhere;line-height:1.65;color:#d5e9e4;font-size:12px;max-height:225px;overflow:auto;padding:13px;background:#071e28;border-radius:10px;border:1px solid #24454e}
+.impact-pub-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px}
+.impact-pub-actions .btn{flex:1;min-width:130px}
+.impact-pub-empty{border:1px dashed #42666a;border-radius:14px;padding:25px;color:#b5d1cb}
+</style>
+</head><body><div class="app"><nav class="rail" aria-label="Navigation du studio"><div class="mark">A/</div><button class="nav active" data-tab="image"><span>▧</span>Image</button><button class="nav" data-tab="carousel"><span>▤</span>Carrousel</button><button class="nav" data-tab="video"><span>▷</span>Vidéo</button><button class="nav" data-tab="publications"><span>▤</span>Publications
 </button><div class="railfoot">CREATIVE STUDIO · V3.6.1</div></nav><aside class="panel"><div class="eyebrow">ATELIER / IMPACT · V3.6.1 / 2026</div><h1>Un studio.<br>Des idées fortes.</h1><p class="muted">Direction artistique, narration éditoriale et création audiovisuelle, directement dans ton navigateur.</p><div class="section"><h3>01 / Identité visuelle</h3><div class="field"><label for="theme">Univers graphique</label><select id="theme"><option value="ocean">Océan · Stratégie & compétences</option><option value="editorial">Éditorial · Sable & encre</option><option value="sport">Sport · Performance & énergie</option><option value="future">Innovation · Data & IA</option><option value="rose">Impact · Pastel & humanité</option></select></div><div class="field" id="layout-field"><label for="layout">Composition</label><select id="layout"><option value="signature">Signature · Magazine</option><option value="bold">Impact · Titre monumental</option><option value="photo">Reportage · Photo immersive</option><optgroup label="ÉDITORIAL / NOUVELLES COMPOSITIONS"><option value="manifesto">Manifeste · Typographie intégrale</option><option value="split">Diptyque · Deux colonnes</option><option value="poster">Affiche · Titre géant</option><option value="frame">Galerie · Cadre signature</option><option value="diagonal">Perspective · Géométrie</option><option value="minimal">Essentiel · Minimalisme</option><option value="numbers">Dossier · Chiffre éditorial</option><option value="stripe">Horizons · Bandes graphiques</option><option value="spotlight">Focus · Halo lumineux</option><option value="quote">Édito · Citation visuelle</option><option value="vertical">Vertical · Titre latéral</option><option value="collage">Collage · Blocs modulaires</option></optgroup></select></div><div class="field"><label>Explorer les directions artistiques</label><div class="row"><button type="button" class="btn small" id="surprise">✦ Inspiration aléatoire</button><button type="button" class="btn small" id="nextLayout">→ Composition suivante</button></div></div><div class="section" id="layerEditor"><h3>04 / Calques libres · V3.6</h3><p class="layer-hint">Ajoute des textes et des formes au-dessus de la composition. Sélectionne et déplace un calque directement dans l’aperçu.</p><div class="layer-tools"><button class="btn small" id="addTextLayer" type="button">+ Texte</button><button class="btn small" id="addShapeLayer" type="button">+ Forme</button><button class="btn small" id="addImageLayer" type="button">+ Photo</button><input id="layerImageFile" type="file" accept="image/png,image/jpeg,image/webp" hidden></div><div id="layerList" aria-label="Liste des calques"></div><div id="layerProperties" class="layer-selected hidden"><div class="field"><label for="layerText">Texte du calque</label><textarea id="layerText" rows="2"></textarea></div><div class="field"><label for="layerColor">Couleur</label><input id="layerColor" type="color" value="#bde9da"></div><div class="field"><label for="layerSize">Taille <output id="layerSizeValue">64</output></label><input id="layerSize" type="range" min="16" max="180" value="64"></div><div class="field" id="layerHeightField"><label for="layerHeight">Hauteur <output id="layerHeightValue">190</output></label><input id="layerHeight" type="range" min="30" max="1100" value="190"></div><div class="field"><label for="layerWidth">Largeur <output id="layerWidthValue">400</output></label><input id="layerWidth" type="range" min="80" max="1050" value="400"></div><div class="layer-tools"><button class="btn small" id="layerUp" type="button">↑ Devant</button><button class="btn small" id="layerDown" type="button">↓ Derrière</button><button class="btn small" id="layerLock" type="button">Verrouiller</button><button class="btn small" id="layerDelete" type="button">Supprimer</button><button class="btn small" id="layerDuplicate" type="button">Dupliquer</button></div></div><p class="layer-hint">Calques texte, formes et photos indépendantes. Glisser pour déplacer ; poignée en bas à droite pour redimensionner. Les photos importées sont intégrées aux projets JSON (attention à leur taille).</p></div><div class="field ai-direction"><label>Directeur artistique · 3 propositions</label><p class="help">Sélection locale selon les mots du titre. Aucune API ni donnée inventée.</p><button type="button" class="btn" id="suggestArt" style="width:100%">✦ Proposer 3 directions</button><div id="artSuggestions" class="art-suggestions" aria-live="polite"></div></div><div class="field"><label for="visual">Traitement de l'image</label><select id="visual"><option value="auto">Automatique (avec photo si disponible)</option><option value="graphic">Couverture graphique sans photographie</option><option value="photo">Photographie</option></select></div></div><div class="section"><h3>02 / Atelier typographique</h3><div class="field"><label for="titleScale">Échelle du titre <output id="titleScaleValue">100 %</output></label><input id="titleScale" type="range" min="65" max="150" step="5" value="100"></div><div class="field"><label for="titleX">Décalage horizontal <output id="titleXValue">0 px</output></label><input id="titleX" type="range" min="-250" max="250" step="5" value="0"></div><div class="field"><label for="titleY">Décalage vertical <output id="titleYValue">0 px</output></label><input id="titleY" type="range" min="-250" max="250" step="5" value="0"></div><div class="row"><button type="button" class="btn small" id="dragTitle">✥ Déplacer le titre</button><button type="button" class="btn small" id="resetTitle">↺ Recentrer</button></div><p class="help">Active « Déplacer le titre », puis glisse sur le visuel. Les réglages sont enregistrés dans le projet.</p><div class="field"><label for="alignTitle">Alignement</label><select id="alignTitle"><option value="left">À gauche</option><option value="center">Centré</option><option value="right">À droite</option></select></div><div class="field"><label for="texture">Texture graphique</label><select id="texture"><option value="rings">Cercles éditoriaux</option><option value="grid">Grille architecturale</option><option value="grain">Grain discret</option><option value="none">Épuré</option></select></div><div class="field"><label for="accentMode">Couleur d'accent</label><select id="accentMode"><option value="palette">Palette de l'univers</option><option value="coral">Corail doux</option><option value="lavender">Lavande</option><option value="gold">Sable doré</option><option value="ice">Glacier</option></select></div></div><div class="section"><h3>03 / Éditorial</h3><div class="field"><label for="category">Rubrique</label><input id="category" value="COMPÉTENCES & AVENIR" maxlength="65"></div><div class="field"><label for="title">Titre principal <span id="count">0</span></label><textarea id="title" maxlength="240">Les compétences qui dessinent le monde de demain.</textarea></div><div class="field"><label for="subtitle">Accroche complémentaire</label><textarea id="subtitle" maxlength="220" placeholder="Contexte ou sous-titre facultatif"></textarea></div><div class="row"><div class="field"><label for="source">Source</label><input id="source" value="CEDEFOP · EUROPE"></div><div class="field"><label for="edition">Édition</label><input id="edition" value="01"></div></div><div class="field"><label for="sourceUrl">Lien vers l'article</label><input id="sourceUrl" placeholder="https://..."></div></div><div class="section"><h3>04 / Médias</h3><div class="field"><label for="image">URL de l'image</label><input id="image" placeholder="https://..."></div><div class="field"><label for="upload">Importer une image autorisée</label><input id="upload" type="file" accept="image/png,image/jpeg,image/webp,image/avif"></div><div class="field"><label for="position">Cadrage</label><select id="position"><option value="center">Centré</option><option value="top">Haut</option><option value="bottom">Bas</option></select></div><div class="field"><label for="credit">Crédit photographique</label><input id="credit" placeholder="© Photographe / organisme"></div><div class="field"><label for="signature">Signature</label><input id="signature" value="©jeanmaximecacheux"></div><p class="help">Une image publique n'est pas forcément réutilisable. Vérifie la licence avant toute diffusion.</p></div><div class="section"><h3>05 / Projet</h3><div class="row"><button class="btn small" id="save">Enregistrer</button><button class="btn small" id="restore">Restaurer</button></div><div class="row" style="margin-top:9px"><button class="btn small" id="json">↓ Projet JSON</button><button class="btn small" id="importBtn">↑ Importer</button></div><input type="file" accept="application/json,.json" id="importFile" hidden><div class="row" style="margin-top:9px"><button class="btn small" id="undo">↶ Annuler</button><button class="btn small" id="redo">↷ Rétablir</button></div></div></aside>
 <main class="workspace"><div class="topline"><div><div class="eyebrow" id="workspaceKicker">STUDIO GRAPHIQUE</div><h2 id="workspaceTitle">Couverture LinkedIn</h2><p id="workspaceSub">Une couverture lisible, personnalisée et exportable en HD.</p></div><span class="chip" id="sizeChip">1200 × 1200 · PNG</span></div><div class="view-controls" aria-label="Contrôles de l’aperçu"><div class="zoom-actions"><button class="btn small" id="zoomOut" title="Réduire l’aperçu" aria-label="Zoom arrière">−</button><output id="zoomLabel" aria-live="polite">Ajusté</output><button class="btn small" id="zoomIn" title="Agrandir l’aperçu" aria-label="Zoom avant">+</button><button class="btn small" id="zoomFit">⤢ Ajuster</button><button class="btn small" id="zoom100">100 %</button></div><button class="btn small" id="toggleInspector" aria-pressed="false">Masquer les propriétés</button></div><div class="stage" id="stage"><canvas id="canvas" width="1200" height="1200" aria-label="Aperçu de la création"></canvas></div><section id="publicationsPanel" class="hidden"
   aria-label="Publications LinkedIn"
@@ -160,4 +179,103 @@ canvas.toDataURL=function(...args){const was=showLayerGuides;showLayerGuides=fal
 
 const q=new URLSearchParams(location.search);for(const id of fields){const x=q.get(id)??(id==='sourceUrl'?q.get('url'):null);if(x!==null)$(id).value=x}if(!palettes[val('theme')])$('theme').value='ocean';if(!Array.from($('layout').options).some(o=>o.value===val('layout')))$('layout').value='signature';if(!['auto','photo','graphic'].includes(val('visual')))$('visual').value='auto';slides[0].title=val('title');slides[0].body=val('subtitle')||slides[0].body;scenes[0].text=val('title');document.fonts.ready.then(render);setMode('image');snapshot();if(val('image'))loadPhoto(val('image'));
 })();
-</script></body></html>
+</script>
+<script id="impact-v5-publications-script">
+(()=>{
+'use strict';
+const panel=document.getElementById('publicationsPanel');
+const list=document.getElementById('publicationsList');
+const status=document.getElementById('publicationsStatus');
+if(!panel||!list||!status)return;
+const oldHeading=panel.querySelector('h2');
+if(oldHeading)oldHeading.textContent='Bibliothèque éditoriale';
+const intro=panel.querySelector('p');
+if(intro)intro.textContent='Brouillons générés par l’IA · vérification humaine obligatoire avant toute diffusion sur LinkedIn.';
+const header=document.createElement('div');
+header.className='impact-pub-head';
+const heading=panel.querySelector('h2');
+if(heading)header.appendChild(heading);
+const refresh=document.createElement('button');
+refresh.type='button';refresh.className='btn small';refresh.textContent='↻ Actualiser les brouillons';
+refresh.addEventListener('click',()=>load(true));
+header.appendChild(refresh);panel.prepend(header);
+let loading=false;
+function text(tag,value,cls){
+ const el=document.createElement(tag);
+ if(cls)el.className=cls;
+ el.textContent=String(value??'');
+ return el;
+}
+function makeButton(label,fn,primary=false){
+ const b=document.createElement('button');b.type='button';
+ b.className='btn small'+(primary?' primary':'');b.textContent=label;
+ b.addEventListener('click',fn);return b;
+}
+function fillVisual(post){
+ const fields={
+  title:post.titre_visuel||post.titre_source||'',
+  category:post.categorie||'COMPÉTENCES & AVENIR',
+  source:post.source||post.titre_source||'',
+  sourceUrl:post.url_source||'',
+ };
+ for(const [key,value] of Object.entries(fields)){
+  const field=document.getElementById(key);
+  if(field){field.value=String(value);field.dispatchEvent(new Event('input',{bubbles:true}));}
+ }
+ const imageTab=document.querySelector('[data-tab="image"]');
+ if(imageTab)imageTab.click();
+ const notice=document.getElementById('status');
+ if(notice)notice.textContent='Brouillon chargé dans le studio. Vérifie le titre, les sources et les droits des images avant export.';
+}
+function render(items){
+ list.replaceChildren();
+ if(!items.length){
+  list.append(text('div','Aucun brouillon disponible pour le moment. Relance la collecte RSS ou vérifie la base D1.','impact-pub-empty'));
+  return;
+ }
+ for(const post of items){
+  const card=document.createElement('article');card.className='impact-pub-card';
+  const top=document.createElement('div');top.className='impact-pub-top';
+  top.append(text('span',post.categorie||'ÉDITORIAL','impact-pub-tag'));
+  if(post.score_ia!==null&&post.score_ia!==undefined)top.append(text('span','Score IA · '+post.score_ia,'impact-pub-score'));
+  card.append(top,text('h3',post.titre_visuel||post.titre_source||'Brouillon sans titre'));
+  const source=text('div',(post.source||'Source à vérifier')+' · '+(post.statut||'à valider'),'impact-pub-source');
+  card.append(source,text('div',post.texte_linkedin||'Aucun texte LinkedIn disponible.','impact-pub-text'));
+  const actions=document.createElement('div');actions.className='impact-pub-actions';
+  actions.append(makeButton('✦ Créer le visuel',()=>fillVisual(post),true));
+  actions.append(makeButton('Copier le post',async()=>{
+   try{await navigator.clipboard.writeText(String(post.texte_linkedin||''));status.textContent='Texte copié. Pense à vérifier les faits avant publication.';}
+   catch{status.textContent='Copie indisponible dans ce navigateur.';}
+  }));
+  if(post.url_source){
+   try{const url=new URL(post.url_source);if(url.protocol==='https:'||url.protocol==='http:'){
+    actions.append(makeButton('↗ Consulter la source',()=>window.open(url.href,'_blank','noopener,noreferrer')));
+   }}catch{}
+  }
+  card.append(actions);list.append(card);
+ }
+}
+async function load(force=false){
+ if(loading)return;
+ if(!force&&list.children.length)return;
+ loading=true;refresh.disabled=true;
+ status.textContent='Chargement des brouillons depuis Cloudflare…';
+ try{
+  const res=await fetch('/api/publications',{method:'GET',credentials:'same-origin',headers:{Accept:'application/json'},cache:'no-store'});
+  if(!res.ok)throw new Error('HTTP '+res.status+(res.status===401||res.status===403?' · accès refusé':''));
+  const data=await res.json();
+  if(data.status==='error')throw new Error(data.error||'Erreur API');
+  const items=Array.isArray(data)?data:Array.isArray(data.publications)?data.publications:Array.isArray(data.results)?data.results:null;
+  if(!items)throw new Error('Réponse API inattendue : liste de publications absente');
+  render(items);
+  status.textContent=items.length+' brouillon'+(items.length>1?'s':'')+' récupéré'+(items.length>1?'s':'')+' · aucun envoi automatique à LinkedIn.';
+ }catch(err){
+  list.replaceChildren();
+  status.textContent='Impossible de charger les brouillons : '+err.message+'. Vérifie que /api/publications répond bien sur ce domaine et que Cloudflare Access autorise la requête.';
+ }finally{loading=false;refresh.disabled=false;}
+}
+document.querySelectorAll('[data-tab="publications"]').forEach(b=>b.addEventListener('click',()=>load(),{capture:false}));
+if(!panel.classList.contains('hidden'))load();
+})();
+</script>
+</body></html>
