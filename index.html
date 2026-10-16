@@ -76,6 +76,41 @@
 
   </div>
 
+<!-- ATELIER / IMPACT V5 - Calendrier éditorial -->
+<section id="editorialCalendar"
+  style="margin-top:24px;padding:22px;border:1px solid #315a65;border-radius:16px;background:#103440;">
+
+  <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;">
+    <div>
+      <h3 style="margin:0;color:#ffffff;font-size:18px;">
+        Calendrier éditorial
+      </h3>
+      <p style="margin:6px 0 0;color:#c1ded9;font-size:12px;">
+        Planification de vos publications LinkedIn
+      </p>
+    </div>
+
+    <div style="display:flex;gap:8px;align-items:center;">
+      <button type="button" class="btn" id="calendarPrevious"
+        aria-label="Mois précédent">←</button>
+      <strong id="calendarMonthLabel"
+        style="color:#ffffff;min-width:130px;text-align:center;">
+        Calendrier
+      </strong>
+      <button type="button" class="btn" id="calendarNext"
+        aria-label="Mois suivant">→</button>
+    </div>
+  </div>
+
+  <div id="calendarGrid"
+    style="margin-top:20px;display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:5px;">
+  </div>
+
+  <p style="margin:16px 0 0;color:#c1ded9;font-size:12px;">
+    Les dates sont indicatives. Aucune publication automatique sur LinkedIn.
+  </p>
+</section>
+
   <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:20px;">
     <button type="button" class="btn" data-publication-filter="toutes" aria-pressed="true">
       Toutes
@@ -269,6 +304,88 @@ header.appendChild(refresh);panel.prepend(header);
 let publicationsCache = [];
 let publicationFilter = 'toutes';
 let loading=false;
+
+// ATELIER / IMPACT V5 — Calendrier éditorial
+let calendarDate = new Date();
+calendarDate.setDate(1);
+
+function renderEditorialCalendar(items = []) {
+  const grid = document.getElementById('calendarGrid');
+  const label = document.getElementById('calendarMonthLabel');
+
+  if (!grid || !label) return;
+
+  const year = calendarDate.getFullYear();
+  const month = calendarDate.getMonth();
+
+  label.textContent = new Intl.DateTimeFormat('fr-FR', {
+    month: 'long',
+    year: 'numeric'
+  }).format(calendarDate);
+
+  grid.replaceChildren();
+
+  const weekdays = ['L', 'M', 'M', 'J', 'V', 'S', 'D'];
+
+  weekdays.forEach(day => {
+    const cell = document.createElement('div');
+    cell.textContent = day;
+    cell.style.cssText =
+      'text-align:center;color:#c1ded9;font-size:12px;padding:8px 0';
+    grid.appendChild(cell);
+  });
+
+  const firstDay = (new Date(year, month, 1).getDay() + 6) % 7;
+  const daysInMonth = new Date(year, month + 1, 0).getDate();
+
+  for (let i = 0; i < firstDay; i++) {
+    grid.appendChild(document.createElement('div'));
+  }
+
+  for (let day = 1; day <= daysInMonth; day++) {
+    const dateKey =
+      `${year}-${String(month + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
+
+    const posts = items.filter(post =>
+      typeof post.date_publication === 'string' &&
+      post.date_publication.slice(0, 10) === dateKey
+    );
+
+    const cell = document.createElement('div');
+    cell.style.cssText =
+      'min-height:48px;padding:6px;border:1px solid #315a65;border-radius:8px;color:#ffffff;font-size:12px;overflow:hidden';
+
+    const number = document.createElement('strong');
+    number.textContent = String(day);
+    cell.appendChild(number);
+
+    posts.forEach(post => {
+      const entry = document.createElement('div');
+      entry.textContent = post.titre_visuel || 'Publication';
+      entry.title = entry.textContent;
+      entry.style.cssText =
+        'margin-top:5px;padding:4px;border-radius:5px;background:#bcefe0;color:#062c35;font-size:10px;overflow-wrap:anywhere';
+      cell.appendChild(entry);
+    });
+
+    grid.appendChild(cell);
+  }
+}
+
+document.getElementById('calendarPrevious')
+  ?.addEventListener('click', () => {
+    calendarDate.setMonth(calendarDate.getMonth() - 1);
+    renderEditorialCalendar(publicationsCache);
+  });
+
+document.getElementById('calendarNext')
+  ?.addEventListener('click', () => {
+    calendarDate.setMonth(calendarDate.getMonth() + 1);
+    renderEditorialCalendar(publicationsCache);
+  });
+
+renderEditorialCalendar(publicationsCache);
+
 document.querySelectorAll('[data-publication-filter]').forEach(button => {
   button.addEventListener('click', () => {
     publicationFilter = button.dataset.publicationFilter;
@@ -462,6 +579,7 @@ async function load(force=false){
   if(!items)throw new Error('Réponse API inattendue : liste de publications absente');
   publicationsCache = items;
 render(publicationsCache);
+renderEditorialCalendar(publicationsCache);
   status.textContent=items.length+' brouillon'+(items.length>1?'s':'')+' récupéré'+(items.length>1?'s':'')+' · aucun envoi automatique à LinkedIn.';
  }catch(err){
   list.replaceChildren();
