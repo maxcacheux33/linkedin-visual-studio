@@ -53,6 +53,44 @@
     Espace Publications prêt.
   </div>
 
+<!-- ATELIER / IMPACT V5 - Tableau de bord éditorial -->
+<div id="editorialDashboard"
+     style="margin-top:24px;margin-bottom:24px;">
+
+  <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;">
+
+    <div style="padding:18px 12px;border:1px solid #315a65;border-radius:14px;background:#103440;">
+      <div style="font-size:12px;color:#c1ded9;">À VALIDER</div>
+      <strong id="countPending" style="font-size:30px;color:#ffffff;">—</strong>
+    </div>
+
+    <div style="padding:18px 12px;border:1px solid #315a65;border-radius:14px;background:#103440;">
+      <div style="font-size:12px;color:#c1ded9;">VALIDÉES</div>
+      <strong id="countValidated" style="font-size:30px;color:#bcefe0;">—</strong>
+    </div>
+
+    <div style="padding:18px 12px;border:1px solid #315a65;border-radius:14px;background:#103440;">
+      <div style="font-size:12px;color:#c1ded9;">AVEC UNE DATE</div>
+      <strong id="countScheduled" style="font-size:30px;color:#ffffff;">—</strong>
+    </div>
+
+  </div>
+
+  <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:20px;">
+    <button type="button" class="btn" data-publication-filter="toutes" aria-pressed="true">
+      Toutes
+    </button>
+    <button type="button" class="btn" data-publication-filter="a_valider" aria-pressed="false">
+      À valider
+    </button>
+    <button type="button" class="btn" data-publication-filter="valide" aria-pressed="false">
+      Validées
+    </button>
+  </div>
+
+</div>
+<!-- Fin du tableau de bord -->
+
   <div id="publicationsList"
     style="display:grid;gap:16px;margin-top:20px;">
   </div>
@@ -228,7 +266,24 @@ const refresh=document.createElement('button');
 refresh.type='button';refresh.className='btn small';refresh.textContent='↻ Actualiser les brouillons';
 refresh.addEventListener('click',()=>load(true));
 header.appendChild(refresh);panel.prepend(header);
+let publicationsCache = [];
+let publicationFilter = 'toutes';
 let loading=false;
+document.querySelectorAll('[data-publication-filter]').forEach(button => {
+  button.addEventListener('click', () => {
+    publicationFilter = button.dataset.publicationFilter;
+
+    document.querySelectorAll('[data-publication-filter]').forEach(b => {
+      b.setAttribute(
+        'aria-pressed',
+        String(b === button)
+      );
+    });
+
+    render(publicationsCache);
+  });
+});
+
 function text(tag,value,cls){
  const el=document.createElement(tag);
  if(cls)el.className=cls;
@@ -257,12 +312,40 @@ function fillVisual(post){
  if(notice)notice.textContent='Brouillon chargé dans le studio. Vérifie le titre, les sources et les droits des images avant export.';
 }
 function render(items){
- list.replaceChildren();
- if(!items.length){
+ // ATELIER / IMPACT V5 - Filtrage éditorial
+const filteredItems = items.filter(post =>
+  publicationFilter === 'toutes' ||
+  post.statut === publicationFilter
+);
+
+  // ATELIER / IMPACT V5 - Compteurs éditoriaux
+  const publications = Array.isArray(items) ? items : [];
+
+  const pending = publications.filter(
+    post => post.statut === 'a_valider'
+  ).length;
+
+  const validated = publications.filter(
+    post => post.statut === 'valide'
+  ).length;
+
+  const scheduled = publications.filter(
+    post => Boolean(post.date_publication)
+  ).length;
+
+  const countPending = document.getElementById('countPending');
+  const countValidated = document.getElementById('countValidated');
+  const countScheduled = document.getElementById('countScheduled');
+
+  if (countPending) countPending.textContent = pending;
+  if (countValidated) countValidated.textContent = validated;
+  if (countScheduled) countScheduled.textContent = scheduled;
+list.replaceChildren();
+ if(!filteredItems.length){
   list.append(text('div','Aucun brouillon disponible pour le moment. Relance la collecte RSS ou vérifie la base D1.','impact-pub-empty'));
   return;
  }
- for(const post of items){
+ for(const post of filteredItems){
   const card=document.createElement('article');card.className='impact-pub-card';
   const top=document.createElement('div');top.className='impact-pub-top';
   top.append(text('span',post.categorie||'ÉDITORIAL','impact-pub-tag'));
@@ -368,7 +451,8 @@ async function load(force=false){
   if(data.status==='error')throw new Error(data.error||'Erreur API');
   const items=Array.isArray(data)?data:Array.isArray(data.publications)?data.publications:Array.isArray(data.results)?data.results:null;
   if(!items)throw new Error('Réponse API inattendue : liste de publications absente');
-  render(items);
+  publicationsCache = items;
+render(publicationsCache);
   status.textContent=items.length+' brouillon'+(items.length>1?'s':'')+' récupéré'+(items.length>1?'s':'')+' · aucun envoi automatique à LinkedIn.';
  }catch(err){
   list.replaceChildren();
