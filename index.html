@@ -303,6 +303,55 @@ if(!editor){
   editor.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }));
 
+if (post.statut === 'valide') {
+  actions.append(
+    makeButton('✓ Validé', () => {
+      status.textContent = 'Cette publication est déjà validée.';
+    })
+  );
+} else if (post.statut === 'a_valider') {
+  actions.append(
+    makeButton('✓ Valider', async () => {
+      const confirmation = window.confirm(
+        'Confirmer la validation de cette publication LinkedIn ?\n\n' +
+        'Elle sera marquée comme validée, sans publication automatique.'
+      );
+
+      if (!confirmation) return;
+
+      status.textContent = 'Validation en cours...';
+
+      try {
+        const response = await fetch(
+          '/api/publications/' + encodeURIComponent(post.id) + '/valider',
+          {
+            method: 'POST',
+            credentials: 'same-origin',
+            headers: {
+              Accept: 'application/json'
+            },
+            cache: 'no-store'
+          }
+        );
+
+        const data = await response.json();
+
+        if (!response.ok || data.status !== 'OK') {
+          throw new Error(data.message || 'Validation impossible');
+        }
+
+        post.statut = 'valide';
+        status.textContent = 'Publication validée avec succès.';
+
+        await load(true);
+
+      } catch (error) {
+        status.textContent =
+          'Erreur de validation : ' + error.message;
+      }
+    })
+  );
+}
 
   card.append(actions);list.append(card);
  }
