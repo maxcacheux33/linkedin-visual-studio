@@ -57,7 +57,36 @@
     style="display:grid;gap:16px;margin-top:20px;">
   </div>
 
-</section><div class="toolbar" id="imageTools"><button class="btn primary" id="exportPng">↓ Exporter PNG HD</button><button class="btn" id="copyUrl">Copier le lien Make</button><button class="btn" id="noPhoto">Sans photographie</button></div><div id="carouselTools" class="hidden"><div class="pages" id="pages"></div><div class="toolbar"><button class="btn" id="addPage">+ Ajouter une page</button><button class="btn" id="duplicatePage">Dupliquer</button><button class="btn" id="deletePage">Supprimer</button><button class="btn" id="moveLeft">←</button><button class="btn" id="moveRight">→</button></div><div class="toolbar"><button class="btn primary" id="exportSlides">↓ Exporter les pages PNG</button><button class="btn" id="exportPdf">↓ Exporter PDF</button></div></div><div id="videoTools" class="hidden"><div class="timeline" id="timeline"></div><div class="toolbar"><button class="btn" id="play">▶ Prévisualiser</button><button class="btn" id="stop">■ Arrêter</button><button class="btn primary" id="record">↓ Exporter WebM</button></div><p class="preview-note">Vidéo graphique sans piste audio. Export WebM local si le navigateur prend en charge MediaRecorder. MP4 non disponible dans cette version.</p></div><p class="status" id="status" role="status">Prêt. Les données Make peuvent être chargées automatiquement via l'URL.</p></main>
+</section>
+<section id="publicationEditor" class="hidden" style="padding:24px;max-width:900px;">
+  <h2>Modifier une publication LinkedIn</h2>
+  <p>Relisez et personnalisez votre brouillon avant validation.</p>
+
+  <input type="hidden" id="editPublicationId">
+
+  <label for="editPublicationTitle">Titre du visuel</label>
+  <input id="editPublicationTitle" type="text" style="width:100%;padding:12px;margin:8px 0 20px;">
+
+  <label for="editPublicationText">Texte LinkedIn</label>
+  <textarea id="editPublicationText" rows="12"
+    style="width:100%;padding:12px;margin:8px 0 20px;"></textarea>
+
+  <label for="editPublicationDate">Date de publication envisagée</label>
+  <input id="editPublicationDate" type="date"
+    style="display:block;padding:12px;margin:8px 0 20px;">
+
+  <div style="display:flex;gap:12px;flex-wrap:wrap;">
+    <button class="btn primary" id="savePublicationEdit" type="button">
+      Enregistrer les modifications
+    </button>
+    <button class="btn" id="cancelPublicationEdit" type="button">
+      Annuler
+    </button>
+  </div>
+
+  <p id="publicationEditStatus" role="status"></p>
+</section>
+<div class="toolbar" id="imageTools"><button class="btn primary" id="exportPng">↓ Exporter PNG HD</button><button class="btn" id="copyUrl">Copier le lien Make</button><button class="btn" id="noPhoto">Sans photographie</button></div><div id="carouselTools" class="hidden"><div class="pages" id="pages"></div><div class="toolbar"><button class="btn" id="addPage">+ Ajouter une page</button><button class="btn" id="duplicatePage">Dupliquer</button><button class="btn" id="deletePage">Supprimer</button><button class="btn" id="moveLeft">←</button><button class="btn" id="moveRight">→</button></div><div class="toolbar"><button class="btn primary" id="exportSlides">↓ Exporter les pages PNG</button><button class="btn" id="exportPdf">↓ Exporter PDF</button></div></div><div id="videoTools" class="hidden"><div class="timeline" id="timeline"></div><div class="toolbar"><button class="btn" id="play">▶ Prévisualiser</button><button class="btn" id="stop">■ Arrêter</button><button class="btn primary" id="record">↓ Exporter WebM</button></div><p class="preview-note">Vidéo graphique sans piste audio. Export WebM local si le navigateur prend en charge MediaRecorder. MP4 non disponible dans cette version.</p></div><p class="status" id="status" role="status">Prêt. Les données Make peuvent être chargées automatiquement via l'URL.</p></main>
 <aside class="inspector"><h3>Direction artistique & contrôle</h3><div class="field panel-sizes"><label for="leftWidth">Largeur des réglages <output id="leftWidthLabel">350 px</output></label><input type="range" id="leftWidth" min="290" max="500" step="10" value="350"><label for="rightWidth">Largeur des propriétés <output id="rightWidthLabel">300 px</output></label><input type="range" id="rightWidth" min="260" max="430" step="10" value="300"></div><div class="stat"><strong>5 univers graphiques</strong><p>Océan, éditorial, sport, innovation, humanité.</p></div><div class="stat"><strong>V3.4 · Atelier de composition</strong><p>3 directions éditoriales et déplacement interactif du titre sur le visuel.</p></div><div class="stat"><strong>15 compositions</strong><p>3 classiques + 12 nouvelles directions éditoriales.</p></div><div class="stat"><strong>Sources identifiées</strong><p>Conserve l'origine de l'information et le crédit photographique.</p></div><div class="sep"></div><div id="imageInspector"><label class="check"><input type="checkbox" id="rights"> J'ai vérifié les droits de l'image utilisée.</label><p class="help">Si l'image est une bannière avec du texte intégré, choisis « Couverture graphique sans photographie » pour éviter les doubles titres.</p><div class="field"><label for="format">Définition d'export</label><select id="format"><option value="1200">1200 × 1200</option><option value="1600">1600 × 1600</option><option value="1080">1080 × 1080</option></select></div></div><div id="carouselInspector" class="hidden"><div class="eyebrow">ÉDITEUR MULTIPAGE</div><div class="field"><label for="pageTitle">Titre de la page</label><textarea id="pageTitle"></textarea></div><div class="field"><label for="pageBody">Texte secondaire</label><textarea id="pageBody"></textarea></div><p class="help">Modifie chaque page séparément. Les exports utilisent la même identité visuelle que le studio image.</p></div><div id="videoInspector" class="hidden"><div class="eyebrow">TIMELINE · 3 SCÈNES</div><div class="field"><label for="sceneText">Texte de la scène</label><textarea id="sceneText"></textarea></div><div class="field"><label for="sceneDuration">Durée (secondes)</label><input id="sceneDuration" type="number" min="2" max="12" value="4"></div><p class="help">Les transitions sont animées. Le rendu final est produit dans le navigateur, sans API vidéo payante.</p></div><div class="credit">ATELIER / IMPACT V3.3 · Studio créatif local · Aucune publication LinkedIn automatique.</div></aside></div><div id="toast" class="toast hidden" role="status"></div>
 <script>
 (()=>{'use strict';const $=id=>document.getElementById(id),canvas=$('canvas'),ctx=canvas.getContext('2d'),fields=['theme','layout','visual','category','title','subtitle','source','edition','sourceUrl','image','position','credit','signature','format','titleScale','titleX','titleY','alignTitle','texture','accentMode'];let mode='image',photo=null,photoToken=0,selectedPage=0,selectedScene=0,animation=0,playing=false,recorder=null,history=[],cursor=-1,restoring=false,localPhoto=false;const palettes={ocean:{dark:'#0a3440',mid:'#1d6670',paper:'#f5f0e7',ink:'#0a303b',accent:'#bde9da',line:'#83b9b6'},editorial:{dark:'#30363a',mid:'#687276',paper:'#f1e7d9',ink:'#28343a',accent:'#e6c6a6',line:'#baaa9d'},sport:{dark:'#11382f',mid:'#317466',paper:'#f4f0e6',ink:'#15372e',accent:'#e4e9a1',line:'#91b8a5'},future:{dark:'#152f56',mid:'#4c6393',paper:'#f0f2f8',ink:'#203b63',accent:'#b6d6ff',line:'#a5bce6'},rose:{dark:'#463b49',mid:'#967a89',paper:'#f8efec',ink:'#493c47',accent:'#f3d4ca',line:'#d9b7c4'}};let slides=[{title:'Les compétences qui dessinent demain',body:'Un enjeu pour les entreprises et les talents.'},{title:'Comprendre les transformations',body:'Les métiers et les besoins évoluent.'},{title:'Ce que cela change',body:'Identifier les enjeux et les pistes de réflexion.'},{title:'Pour aller plus loin',body:'Source et perspectives.'}];let scenes=[{text:'Les compétences dessinent demain.',duration:4},{text:'Comprendre les transformations du travail.',duration:5},{text:'Quels enjeux pour les entreprises ?',duration:4}];const val=id=>$(id).value.trim(),get=()=>Object.fromEntries(fields.map(id=>[id,$(id).value])),notify=msg=>{$('status').textContent=msg},toast=msg=>{const e=$('toast');e.textContent=msg;e.classList.remove('hidden');setTimeout(()=>e.classList.add('hidden'),2700)};const font=(size,weight=800)=>`${weight} ${size}px Manrope, Arial, sans-serif`;function write(s,x,y,size,color,weight=800,align='left'){ctx.font=font(size,weight);ctx.fillStyle=color;ctx.textAlign=align;ctx.textBaseline='top';ctx.fillText(s,x,y)}function wrap(str,width,size,weight=800){ctx.font=font(size,weight);const lines=[];for(const para of String(str||'').split('\n')){let line='';for(const word of para.split(/\s+/)){if(!word)continue;const next=line?line+' '+word:word;if(ctx.measureText(next).width>width&&line){lines.push(line);line=word}else line=next}if(line)lines.push(line)}return lines}function fit(str,width,maxH,start=76){for(let s=start;s>=29;s-=2){let l=wrap(str,width,s);if(l.length*s*1.22<=maxH)return {size:s,lines:l}}return {size:29,lines:wrap(str,width,29)}}function rounded(x,y,w,h,r,color){ctx.fillStyle=color;ctx.beginPath();ctx.roundRect(x,y,w,h,r);ctx.fill()}function cover(img,x,y,w,h){if(!img)return;const iw=img.naturalWidth||img.width,ih=img.naturalHeight||img.height;if(!iw||!ih)return;const s=Math.max(w/iw,h/ih),dw=iw*s,dh=ih*s;let yy=y+(h-dh)/2;if(val('position')==='top')yy=y;if(val('position')==='bottom')yy=y+h-dh;ctx.drawImage(img,x+(w-dw)/2,yy,dw,dh)}function bg(p,h,withPhoto){let g=ctx.createLinearGradient(0,0,1200,h);g.addColorStop(0,p.dark);g.addColorStop(1,p.mid);ctx.fillStyle=g;ctx.fillRect(0,0,1200,h);if(withPhoto){cover(photo,0,0,1200,h);let shade=ctx.createLinearGradient(0,0,0,h);shade.addColorStop(0,'#061c29aa');shade.addColorStop(1,'#061c29a8');ctx.fillStyle=shade;ctx.fillRect(0,0,1200,h)}else{ctx.save();ctx.strokeStyle=p.accent;ctx.globalAlpha=.2;ctx.lineWidth=2;for(let r=100;r<700;r+=72){ctx.beginPath();ctx.arc(1080,130,r,0,7);ctx.stroke()}ctx.restore();write(val('edition')||'01',70,130,210,'#ffffff16')}write('ATELIER / IMPACT',62,49,19,'#fff');write('LE REGARD PRO / ÉDITION '+(val('edition')||'01'),1135,52,12,'#fff',700,'right');ctx.fillStyle='#ffffff7a';ctx.fillRect(62,92,1075,1);rounded(62,h-88,350,43,21,p.accent);write(val('category').toUpperCase().slice(0,39),82,h-75,15,p.ink);write(val('signature')||'©jeanmaximecacheux',1137,h-69,13,'#fff',700,'right')}
@@ -252,6 +281,29 @@ function render(items){
     actions.append(makeButton('↗ Consulter la source',()=>window.open(url.href,'_blank','noopener,noreferrer')));
    }}catch{}
   }
+actions.append(makeButton('✎ Modifier', () => {
+  const editor = document.getElementById('publicationEditor');
+
+if(!editor){
+    status.textContent = "Fenêtre d'édition introuvable.";
+    return;
+  }
+
+  document.getElementById('editPublicationId').value = post.id;
+  document.getElementById('editPublicationTitle').value =
+    post.titre_visuel || '';
+  document.getElementById('editPublicationText').value =
+    post.texte_linkedin || '';
+  document.getElementById('editPublicationDate').value =
+    post.date_publication
+      ? String(post.date_publication).slice(0, 10)
+      : '';
+
+  editor.classList.remove('hidden');
+  editor.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}));
+
+
   card.append(actions);list.append(card);
  }
 }
@@ -274,8 +326,80 @@ async function load(force=false){
   status.textContent='Impossible de charger les brouillons : '+err.message+'. Vérifie que /api/publications répond bien sur ce domaine et que Cloudflare Access autorise la requête.';
  }finally{loading=false;refresh.disabled=false;}
 }
+document.getElementById('cancelPublicationEdit')
+  ?.addEventListener('click', () => {
+    document.getElementById('publicationEditor')
+      ?.classList.add('hidden');
+
+    document.getElementById('publicationEditStatus').textContent = '';
+  });
 document.querySelectorAll('[data-tab="publications"]').forEach(b=>b.addEventListener('click',()=>load(),{capture:false}));
 if(!panel.classList.contains('hidden'))load();
 })();
+
+const savePublicationButton =
+  document.getElementById('savePublicationEdit');
+
+savePublicationButton?.addEventListener('click', async () => {
+  const id = document.getElementById('editPublicationId').value;
+  const titre = document.getElementById('editPublicationTitle').value.trim();
+  const texte = document.getElementById('editPublicationText').value.trim();
+  const date = document.getElementById('editPublicationDate').value;
+
+  const message = document.getElementById('publicationEditStatus');
+
+  if (!/^[1-9]\d*$/.test(id) || !titre || !texte) {
+    message.textContent = 'Veuillez renseigner un titre et un texte valides.';
+    return;
+  }
+
+  savePublicationButton.disabled = true;
+  message.textContent = 'Enregistrement en cours...';
+
+  try {
+    const response = await fetch(
+      '/api/publications/' + encodeURIComponent(id),
+      {
+        method: 'PATCH',
+        credentials: 'same-origin',
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json'
+        },
+        body: JSON.stringify({
+          titre_visuel: titre,
+          texte_linkedin: texte,
+          date_publication: date || null
+        })
+      }
+    );
+
+    const data = await response.json();
+
+    if (!response.ok || data.status !== 'OK') {
+      throw new Error(data.message || 'Enregistrement impossible');
+    }
+
+    message.textContent = 'Modifications enregistrées avec succès.';
+
+    document.getElementById('publicationEditor')
+      .classList.add('hidden');
+
+    const refreshButton =
+      document.getElementById('refreshPublications');
+
+    if (refreshButton) {
+      refreshButton.click();
+    } else {
+      location.reload();
+    }
+
+  } catch (error) {
+    message.textContent = 'Erreur : ' + error.message;
+  } finally {
+    savePublicationButton.disabled = false;
+  }
+});
+
 </script>
 </body></html>
