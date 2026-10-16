@@ -278,6 +278,11 @@ document.querySelectorAll('[data-publication-filter]').forEach(button => {
         'aria-pressed',
         String(b === button)
       );
+
+b.style.background = b === button ? '#bcefe0' : '';
+b.style.color = b === button ? '#062c35' : '';
+b.style.borderColor = b === button ? '#bcefe0' : '';
+b.style.fontWeight = b === button ? '700' : '';
     });
 
     render(publicationsCache);
